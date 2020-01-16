@@ -2,6 +2,12 @@ import React from 'react'
 import { StyleSheet, Platform, Image, Text, View, TouchableOpacity } from 'react-native'
 import {Actions} from 'react-native-router-flux';
 import {auth, signOut} from '../configs/firebase'
+import { Tab, Tabs, TabHeading, Container, Header, Icon } from 'native-base';
+import Contact from './Contact'
+import Messages from './Messages'
+import Camera from './Camera'
+import {header} from '../components/Header'
+
 export default class Main extends React.Component {
     state = { currentUser: null }
     componentDidMount() {
@@ -16,7 +22,19 @@ export default class Main extends React.Component {
     console.log(this.props);
     
     return (
-      <View style={styles.container}>
+        <Container>
+        {header('Chat App')}
+        <Tabs initialPage= {1}>
+          <Tab heading={ <TabHeading><Icon name="camera" /><Text style={styles.buttonTexts}>Camera</Text></TabHeading>}>
+            <Camera />
+          </Tab>
+          <Tab heading={ <TabHeading><Icon name="chatboxes" /><Text style={styles.buttonTexts}>Messages</Text></TabHeading>}>
+            <Messages />
+          </Tab>
+          <Tab heading={ <TabHeading><Icon name="paper" /><Text style={styles.buttonTexts}>Contact</Text></TabHeading>}>
+            <Contact />
+          </Tab>
+        </Tabs>
         <TouchableOpacity onPress={this.logout}>
             <Text>
                 Hi {currentUser && currentUser.email}!
@@ -27,7 +45,7 @@ export default class Main extends React.Component {
                 Go to Chat
             </Text>
         </TouchableOpacity>
-      </View>
+        </Container>
     )
   }
 }
@@ -45,6 +63,13 @@ const styles = StyleSheet.create({
     paddingVertical: 13
   },
   buttonText: {
+    fontSize:16,
+    fontWeight:'500',
+    color:'#ffffff',
+    textAlign:'center'
+  },
+  buttonTexts: {
+    marginLeft: 12,
     fontSize:16,
     fontWeight:'500',
     color:'#ffffff',

@@ -37,3 +37,6 @@ export const signOut = () => {
 export const auth = () => {
     return firebase.auth()
 }
+export const uid=()=>{
+    return (firebase.auth().currentUser || {}).uid
+}
