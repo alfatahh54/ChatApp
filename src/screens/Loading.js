@@ -1,13 +1,10 @@
 import React from 'react'
 import { View, Text, ActivityIndicator, StyleSheet } from 'react-native'
-import firebase from '../configs/firebase'
-import {Actions} from 'react-native-router-flux';
+import {onAuth} from '../configs/firebase'
 import Logo from '../components/Logo';
 export default class Loading extends React.Component {
     componentDidMount() {
-        firebase.auth().onAuthStateChanged(user => {
-          Actions.reset(user ? 'home' : 'login' )
-        })
+        onAuth()
       }
     render() {
     return (

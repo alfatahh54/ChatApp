@@ -1,15 +1,15 @@
 import React from 'react'
 import { StyleSheet, Platform, Image, Text, View, TouchableOpacity } from 'react-native'
-import firebase from '../configs/firebase'
 import {Actions} from 'react-native-router-flux';
+import {auth, signOut} from '../configs/firebase'
 export default class Main extends React.Component {
     state = { currentUser: null }
     componentDidMount() {
-        const { currentUser } = firebase.auth()
+        const { currentUser } = auth()
         this.setState({ currentUser })
     } 
     logout() {
-        firebase.auth().signOut()
+        signOut()
     }
     render() {
     const { currentUser } = this.state

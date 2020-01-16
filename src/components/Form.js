@@ -6,15 +6,13 @@ View,
 TextInput,
 TouchableOpacity
 } from 'react-native';
-import firebase from '../configs/firebase'
 import {Actions} from 'react-native-router-flux';
+import {register, login} from '../configs/firebase'
 
 export default class Logo extends Component {
     state = { email: '', password: '', errorMessage: null }
     handleSignUp = () => {
-        firebase
-            .auth()
-            .createUserWithEmailAndPassword(this.state.email, this.state.password)
+        register(this.state.email, this.state.password)
             .then(result => console.log(result))
             .catch(error => {
                 this.setState({ errorMessage: error.message })
@@ -23,9 +21,7 @@ export default class Logo extends Component {
     }
     handleLogin = () => {
         const { email, password } = this.state
-        firebase
-          .auth()
-          .signInWithEmailAndPassword(email, password)
+        login(email,password)
           .then(result => console.log(result))
           .catch(error => this.setState({ errorMessage: error.message }))
     }

@@ -5,8 +5,12 @@ View,
 StatusBar
 } from 'react-native';
 import Routes from './src/routes/Routes';
+import {initApi} from './src/configs/api'
 
 export default class App extends Component {
+  componentWillMount(){
+    initApi();
+  }
   render() {
     return (
     <View style={styles.container}>

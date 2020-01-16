@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import {Router, Stack, Scene} from 'react-native-router-flux';
 import Login from '../screens/Login';
 import Signup from '../screens/Signup';
-import Home from './Home';
+import Home from '../screens/Home';
 import Loading from '../screens/Loading';
+import Chat from '../screens/Chat'
 
 export default class Routes extends Component {
     render() {
@@ -14,6 +15,7 @@ export default class Routes extends Component {
                     <Scene key="login" component={Login} title="Login" />
                     <Scene key="signup" component={Signup} title="Register"/>
                     <Scene key="home" component={Home} title="Home"/>
+                    <Scene key="chat" component={Chat} title="Chat"/>
                 </Stack>
             </Router>
         )

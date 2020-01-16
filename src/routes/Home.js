@@ -4,7 +4,7 @@ import {createMaterialTopTabNavigator} from 'react-navigation-tabs';
 import Conatact from '../screens/Contact';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {View} from 'react-native';
-import Chat from '../components/Chat';
+import Chat from '../screens/Chat';
 
 const AppNavigator = createMaterialTopTabNavigator(
   {
