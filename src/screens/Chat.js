@@ -4,6 +4,7 @@ import { ImageBackground, StyleSheet, FlatList } from 'react-native';
 import { getMessages, postMessage } from '../configs/api';
 import Message from '../components/Message';
 import Compose from '../components/Compose';
+import {uid} from '../configs/firebase';
 
 export default class Chat extends React.Component {
 
@@ -55,7 +56,7 @@ export default class Chat extends React.Component {
         this.setState({
             messages: Object.values(snapshot.val())
         })
-    })
+    }, uid(), this.props.data)
   }
   componentWillUnmount() {
     this.unsubscribeGetMessages();

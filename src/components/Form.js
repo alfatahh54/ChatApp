@@ -9,7 +9,7 @@ Alert
 } from 'react-native';
 import {validationService} from '../validation/Service';
 import {Actions} from 'react-native-router-flux';
-import {register, login} from '../configs/firebase'
+import {register, login, setData} from '../configs/firebase'
 
 export default class Logo extends Component {
     state = { 
@@ -22,6 +22,10 @@ export default class Logo extends Component {
               type: 'password',
               value: '',
             },
+            name: {
+              type: 'name',
+              value:'', 
+            },
         }, 
         errorMessage: null 
     }
@@ -29,7 +33,13 @@ export default class Logo extends Component {
     getFormValidation = validationService.getFormValidation.bind(this);
     handleSignUp = () => {
         register(this.state.inputs.email.value, this.state.inputs.password.value)
-            .then(result => console.log(result))
+            .then(result => {
+                const data = {
+                    name: this.state.inputs.name.value || result.user.email.split('@')[0],
+                    email: result.user.email
+                } 
+                setData('users/'+result.user.uid, data)
+            })
             .catch(error => {
                 this.setState({ errorMessage: error.message })
                 Alert.alert('Failed', this.state.errorMessage, [
@@ -63,6 +73,20 @@ export default class Logo extends Component {
     render(){
         return(
         <View style={styles.container}>
+            {this.props.type === 'Login' ? null :
+            <>
+            <TextInput style={styles.inputBox}
+            underlineColorAndroid='rgba(0,0,0,0)'
+            placeholder="Name"
+            placeholderTextColor = "#000000"
+            selectionColor="#000"
+            onChangeText={value => {
+              this.onInputChange({id: 'name', value});
+            }}
+            />
+            <Text style={styles.erorText}>{this.renderError('name')}</Text>
+            </>
+            }
             <TextInput style={styles.inputBox}
             underlineColorAndroid='rgba(0,0,0,0)'
             placeholder="Email"

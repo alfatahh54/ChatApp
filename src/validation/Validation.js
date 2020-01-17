@@ -19,10 +19,10 @@ export const validation = {
       message: '^Your password must be at least 6 characters',
     },
   },
-  role: {
+  name: {
     presence: {
       allowEmpty: false,
-      message: '^Please enter a password',
+      message: '^Please enter yourname',
     },
   },
 };

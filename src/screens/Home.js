@@ -1,7 +1,7 @@
 import React from 'react'
 import { StyleSheet, Platform, Image, Text, View, TouchableOpacity } from 'react-native'
 import {Actions} from 'react-native-router-flux';
-import {auth, signOut} from '../configs/firebase'
+import {auth} from '../configs/firebase'
 import { Tab, Tabs, TabHeading, Container, Header, Icon } from 'native-base';
 import Contact from './Contact'
 import Messages from './Messages'
@@ -14,9 +14,6 @@ export default class Main extends React.Component {
         const { currentUser } = auth()
         this.setState({ currentUser })
     } 
-    logout() {
-        signOut()
-    }
     render() {
     const { currentUser } = this.state
     console.log(this.props);

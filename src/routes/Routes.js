@@ -5,6 +5,7 @@ import Signup from '../screens/Signup';
 import Home from '../screens/Home';
 import Loading from '../screens/Loading';
 import Chat from '../screens/Chat'
+import Profile from '../screens/Profile';
 
 export default class Routes extends Component {
     render() {
@@ -16,6 +17,7 @@ export default class Routes extends Component {
                     <Scene key="signup" component={Signup} title="Register"/>
                     <Scene key="home" component={Home} title="Home"/>
                     <Scene key="chat" component={Chat} title="Chat"/>
+                    <Scene key="profile" component={Profile} title="Profile"/>
                 </Stack>
             </Router>
         )
