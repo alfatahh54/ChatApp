@@ -32,16 +32,6 @@ export default class Main extends React.Component {
             <Contact />
           </Tab>
         </Tabs>
-        <TouchableOpacity onPress={this.logout}>
-            <Text>
-                Hi {currentUser && currentUser.email}!
-            </Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.button} onPress={Actions.chat}>
-            <Text style={styles.buttonText}>
-                Go to Chat
-            </Text>
-        </TouchableOpacity>
         </Container>
     )
   }

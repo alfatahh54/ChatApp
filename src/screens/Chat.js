@@ -4,7 +4,8 @@ import { ImageBackground, StyleSheet, FlatList } from 'react-native';
 import { getMessages, postMessage } from '../configs/api';
 import Message from '../components/Message';
 import Compose from '../components/Compose';
-import {uid} from '../configs/firebase';
+import {uid, db} from '../configs/firebase';
+import {header} from '../components/Header';
 
 export default class Chat extends React.Component {
 
@@ -51,12 +52,24 @@ export default class Chat extends React.Component {
   state = {
     messages: [],
     idS: '',
-    idR: ''
+    idR: '',
+    name:''
   }
-  getData(){
-
+  getUser = async() => {
+    const id =  this.props.data
+    let name = ''
+    await db()
+      .ref('/users/' + id)
+      .once('value')
+      .then(function(snapshoot) {
+        name = (snapshoot.val() && snapshoot.val().name) || '' 
+      })
+    this.setState({
+      name,
+    })
   }
   componentDidMount() {
+    this.getUser()
     const idS = uid(),
           idR = this.props.data
     this.setState({
@@ -74,11 +87,11 @@ export default class Chat extends React.Component {
     this.unsubscribeGetMessages();
   }
   render() {
-    console.log(this.state)
     return (
       <ImageBackground
         style={[ styles.container, styles.backgroundImage ]}
         source={require('../images/background.png')}>
+      {header(this.state.name)}
       {this.state.messages?
       <FlatList
         style={styles.container}
