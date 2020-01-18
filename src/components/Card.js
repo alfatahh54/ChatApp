@@ -2,16 +2,16 @@ import React from 'react';
 import {Text, StyleSheet} from 'react-native';
 import {Thumbnail, Left, Body, ListItem} from 'native-base';
 import {withNavigation} from 'react-navigation';
-import {Actions} from 'react-native-router-flux'
+import {Actions} from 'react-native-router-flux';
 const Card = props => {
   const {item} = props;
-  console.log(item)
+  console.log(item);
   return (
     <ListItem
       thumbnail
       onPress={() => {
         // here we navigate and pass props the components got it
-        Actions.chat(item.uid)
+        Actions.chat(item.uid);
       }}>
       <Left>
         <Thumbnail

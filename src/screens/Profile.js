@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import {
   View,
   Text,
@@ -7,82 +7,78 @@ import {
   ScrollView,
   TouchableOpacity,
 } from 'react-native';
-import Icon from 'react-native-vector-icons/MaterialIcons';
-import {header} from '../components/Header'
-import {Actions} from 'react-native-router-flux';
-import {signOut, auth, db, uid} from '../configs/firebase';
-import {getData} from '../configs/api';
-
+import {header} from '../components/Header';
+import {signOut, db} from '../configs/firebase';
 class Profile extends Component {
-  state={
-    name:'',
-    email:''
-  }
-  getUser = async() => {
-    const id =  this.props.data
+  state = {
+    name: '',
+    email: '',
+  };
+  getUser = async () => {
+    const id = this.props.data;
     let name = '',
-        email = ''
+      email = '';
     await db()
       .ref('/users/' + id)
       .once('value')
       .then(function(snapshoot) {
-        name = (snapshoot.val() && snapshoot.val().name) || ''
-        email = (snapshoot.val() && snapshoot.val().email) || ''  
-      })
+        name = (snapshoot.val() && snapshoot.val().name) || '';
+        email = (snapshoot.val() && snapshoot.val().email) || '';
+      });
     this.setState({
       name,
-      email
-    })
-  }
-  componentDidMount(){
-    this.getUser()
+      email,
+    });
+  };
+  componentDidMount() {
+    this.getUser();
   }
   render() {
     return (
       <View>
         {header('Profile')}
         <ScrollView>
-        <Image
-          style={styles.image}
-          source={{
-            uri: 'https://bootdey.com/img/Content/avatar/avatar6.png',
-          }}
-        />
-        <View style={styles.header}>
-          <View style={styles.row}>
-            <View style={styles.posterContainer}>
-              <Image
-                style={styles.poster}
-                source={{
-                  uri: 'https://bootdey.com/img/Content/avatar/avatar6.png',
-                }}
-              />
+          <Image
+            style={styles.image}
+            source={{
+              uri: 'https://bootdey.com/img/Content/avatar/avatar6.png',
+            }}
+          />
+          <View style={styles.header}>
+            <View style={styles.row}>
+              <View style={styles.posterContainer}>
+                <Image
+                  style={styles.poster}
+                  source={{
+                    uri: 'https://bootdey.com/img/Content/avatar/avatar6.png',
+                  }}
+                />
+              </View>
+              <View style={styles.info}>
+                <Text style={styles.title} numberOfLines={2}>
+                  {this.state.name}
+                </Text>
+              </View>
             </View>
-            <View style={styles.info}>
-              <Text style={styles.title} numberOfLines={2}>
-                {this.state.name}
-              </Text>
-            </View>
+            <Text style={styles.subHeader}>Deskripsi:</Text>
+            <Text style={styles.summary}>-</Text>
+            <Text style={styles.subHeader}>Email:</Text>
+            <Text style={styles.summary}>{this.state.email}</Text>
+            <TouchableOpacity
+              style={styles.buttonContainer}
+              onPress={() => {
+                signOut();
+              }}>
+              <Text>LogOut</Text>
+            </TouchableOpacity>
           </View>
-          <Text style={styles.subHeader}>Deskripsi:</Text>
-          <Text style={styles.summary}>-</Text>
-          <Text style={styles.subHeader}>Email:</Text>
-          <Text style={styles.summary}>{this.state.email}</Text>
-          <TouchableOpacity
-            style={styles.buttonContainer}
-            onPress={() => {
-              signOut()
-            }}>
-            <Text>LogOut</Text>
-          </TouchableOpacity>
-        </View>
-      </ScrollView>
+        </ScrollView>
       </View>
-    )
+    );
   }
 }
 
-export default Profile
+export default Profile;
 const styles = StyleSheet.create({
   image: {
     height: 350,

@@ -1,18 +1,18 @@
-import React from 'react'
-import { View, Text, ActivityIndicator, StyleSheet } from 'react-native'
-import {onAuth} from '../configs/firebase'
+import React from 'react';
+import {View, ActivityIndicator, StyleSheet} from 'react-native';
+import {onAuth} from '../configs/firebase';
 import Logo from '../components/Logo';
 export default class Loading extends React.Component {
-    componentDidMount() {
-        onAuth()
-      }
-    render() {
+  componentDidMount() {
+    onAuth();
+  }
+  render() {
     return (
       <View style={styles.container}>
-        <Logo/>
+        <Logo />
         <ActivityIndicator size="large" />
       </View>
-    )
+    );
   }
 }
 const styles = StyleSheet.create({
@@ -20,5 +20,5 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-  }
-})
+  },
+});
