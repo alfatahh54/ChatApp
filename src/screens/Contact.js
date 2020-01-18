@@ -3,7 +3,7 @@ import {Text, View, FlatList} from 'react-native';
 import {db, uid} from '../configs/firebase';
 import Card from '../components/Card';
 import _ from 'lodash'
-class componentName extends Component {
+class Contact extends Component {
   state={
     result:[],
   }
@@ -44,4 +44,4 @@ class componentName extends Component {
   }
 }
 
-export default componentName
+export default Contact

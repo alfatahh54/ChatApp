@@ -49,30 +49,44 @@ export default class Chat extends React.Component {
 //     firebaseSvc.refOff();
 //   }
   state = {
-    messages: []
+    messages: [],
+    idS: '',
+    idR: ''
+  }
+  getData(){
+
   }
   componentDidMount() {
+    const idS = uid(),
+          idR = this.props.data
+    this.setState({
+      idS,
+      idR
+    })
     this.unsubscribeGetMessages = getMessages((snapshot) => {
-        this.setState({
+      snapshot.val()?  
+      this.setState({
             messages: Object.values(snapshot.val())
-        })
-    }, uid(), this.props.data)
+        }) : null
+    },idS,idR)
   }
   componentWillUnmount() {
     this.unsubscribeGetMessages();
   }
   render() {
+    console.log(this.state)
     return (
       <ImageBackground
         style={[ styles.container, styles.backgroundImage ]}
         source={require('../images/background.png')}>
+      {this.state.messages?
       <FlatList
         style={styles.container}
         data={this.state.messages}
         renderItem={Message}
         keyExtractor={(item, index) => (`message-${index}`)}
-      />
-      <Compose submit={postMessage} />
+      />: null}
+      <Compose submit={postMessage} idS={this.state.idS} idR={this.state.idR} />
       </ImageBackground>
     )
   }

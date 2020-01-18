@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import {Text} from 'react-native';
 
-class componentName extends Component {
+class Messages extends Component {
   render() {
     return (
       <Text>
@@ -11,4 +11,4 @@ class componentName extends Component {
   }
 }
 
-export default componentName
+export default Messages

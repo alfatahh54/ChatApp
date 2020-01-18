@@ -12,7 +12,7 @@ class Compose extends React.Component {
     //submit method yang berfungsi ketika tombol ditekan
     submit() {
         //mengirim nilai ke database berdasarkan state text yang diterima
-        this.props.submit(this.state.text);
+        this.props.submit(this.state.text, this.props.idS, this.props.idR);
         //mengatur state text menjadi kosong
         this.setState({
             text: ''
