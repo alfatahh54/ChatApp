@@ -25,6 +25,7 @@ class Compose extends React.Component {
       <View style={styles.compose}>
         <TextInput
           style={styles.composeText}
+          placeholder="Type a message..."
           //value diatur berdasarkan nilai dari state text
           value={this.state.text}
           //ketika text berubah maka akan melakukan set text

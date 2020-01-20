@@ -1,5 +1,11 @@
 import React, {Component} from 'react';
-import {StyleSheet, Text, View, TouchableOpacity} from 'react-native';
+import {
+  StyleSheet,
+  ScrollView,
+  Text,
+  View,
+  TouchableOpacity,
+} from 'react-native';
 import Logo from '../components/Logo';
 import Form from '../components/Form';
 import {Actions} from 'react-native-router-flux';
@@ -9,16 +15,18 @@ export default class Signup extends Component {
   }
   render() {
     return (
-      <View style={styles.container}>
-        <Logo type="Signup" />
-        <Form type="Signup" />
-        <View style={styles.signupTextCont}>
-          <Text style={styles.signupText}>Already have an account?</Text>
-          <TouchableOpacity onPress={this.goBack}>
-            <Text style={styles.signupButton}> Sign in</Text>
-          </TouchableOpacity>
+      <ScrollView>
+        <View style={styles.container}>
+          <Logo type="Signup" />
+          <Form type="Signup" />
+          <View style={styles.signupTextCont}>
+            <Text style={styles.signupText}>Already have an account?</Text>
+            <TouchableOpacity onPress={this.goBack}>
+              <Text style={styles.signupButton}> Sign in</Text>
+            </TouchableOpacity>
+          </View>
         </View>
-      </View>
+      </ScrollView>
     );
   }
 }
@@ -26,7 +34,6 @@ export default class Signup extends Component {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: '#8080',
-    flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
   },

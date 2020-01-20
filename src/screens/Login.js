@@ -1,5 +1,11 @@
 import React, {Component} from 'react';
-import {StyleSheet, Text, View, TouchableOpacity} from 'react-native';
+import {
+  StyleSheet,
+  ScrollView,
+  Text,
+  View,
+  TouchableOpacity,
+} from 'react-native';
 import Logo from '../components/Logo';
 import Form from '../components/Form';
 import {Actions} from 'react-native-router-flux';
@@ -10,16 +16,18 @@ export default class Login extends Component {
   }
   render() {
     return (
-      <View style={styles.container}>
-        <Logo type="Login" />
-        <Form type="Login" />
-        <View style={styles.signupTextCont}>
-          <Text style={styles.signupText}>Dont have an account yet?</Text>
-          <TouchableOpacity onPress={this.signup}>
-            <Text style={styles.signupButton}> Signup</Text>
-          </TouchableOpacity>
+      <ScrollView>
+        <View style={styles.container}>
+          <Logo type="Login" />
+          <Form type="Login" />
+          <View style={styles.signupTextCont}>
+            <Text style={styles.signupText}>Dont have an account yet?</Text>
+            <TouchableOpacity onPress={this.signup}>
+              <Text style={styles.signupButton}> Signup</Text>
+            </TouchableOpacity>
+          </View>
         </View>
-      </View>
+      </ScrollView>
     );
   }
 }

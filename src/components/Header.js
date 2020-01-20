@@ -20,7 +20,7 @@ this.showMenu = () => {
 this.logout = () => {
   signOut();
 };
-export const header = type => {
+export const header = (type, id) => {
   return (
     <Header>
       <Left>
@@ -49,7 +49,7 @@ export const header = type => {
               <MenuItem
                 onPress={() => {
                   this.hideMenu();
-                  Actions.profile(auth().currentUser.uid);
+                  Actions.profile(id !== 0 ? id : auth().currentUser.uid);
                 }}>
                 Profile
               </MenuItem>

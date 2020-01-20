@@ -1,42 +1,32 @@
 import React, {Component} from 'react';
 import {View, FlatList} from 'react-native';
-import {db} from '../configs/firebase';
 import Card from '../components/Card';
+import {getData} from '../configs/api';
 class Contact extends Component {
   state = {
     result: [],
   };
-  getUser = async () => {
-    let result = [];
-    await db()
-      .ref('/users/')
-      .once('value')
-      .then(function(snapshoot) {
-        snapshoot.forEach(child => {
-          result.push({
-            uid: child.key,
-            name: child.val().name,
-            email: child.val().email,
-          });
-        });
-      });
-    this.setState({
-      result,
-    });
-  };
   componentDidMount() {
-    this.getUser();
+    this.unsubscribeGetContact = getData(snapshot => {
+      snapshot.val()
+        ? this.setState({
+            result: Object.values(snapshot.val()),
+          })
+        : null;
+    }, '/users/');
+  }
+  componentWillUnmount() {
+    this.unsubscribeGetContact();
   }
   render() {
     const result = this.state.result;
-    console.log();
-
     return (
       <View>
+        {console.log(result)}
         <FlatList
           data={result}
           renderItem={({item}) => <Card item={item} />}
-          keyExtractor={item => item.uid}
+          keyExtractor={(item, index) => `email-${index}`}
         />
       </View>
     );

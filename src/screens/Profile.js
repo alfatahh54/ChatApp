@@ -8,7 +8,7 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import {header} from '../components/Header';
-import {signOut, db} from '../configs/firebase';
+import {signOut, db, uid} from '../configs/firebase';
 class Profile extends Component {
   state = {
     name: '',
@@ -64,13 +64,15 @@ class Profile extends Component {
             <Text style={styles.summary}>-</Text>
             <Text style={styles.subHeader}>Email:</Text>
             <Text style={styles.summary}>{this.state.email}</Text>
-            <TouchableOpacity
-              style={styles.buttonContainer}
-              onPress={() => {
-                signOut();
-              }}>
-              <Text>LogOut</Text>
-            </TouchableOpacity>
+            {this.props.data === uid() ? (
+              <TouchableOpacity
+                style={styles.buttonContainer}
+                onPress={() => {
+                  signOut();
+                }}>
+                <Text>LogOut</Text>
+              </TouchableOpacity>
+            ) : null}
           </View>
         </ScrollView>
       </View>
@@ -137,12 +139,12 @@ const styles = StyleSheet.create({
   },
   buttonContainer: {
     marginTop: 10,
-    height: 45,
+    height: 40,
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
     marginBottom: 20,
-    width: 250,
+    width: 80,
     borderRadius: 30,
     backgroundColor: '#00BFFF',
   },

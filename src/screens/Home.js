@@ -16,7 +16,7 @@ export default class Main extends React.Component {
   render() {
     return (
       <Container>
-        {header('Chat App')}
+        {header('Chat App', 0)}
         <Tabs initialPage={1}>
           <Tab
             heading={

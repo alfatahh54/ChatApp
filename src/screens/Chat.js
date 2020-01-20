@@ -12,6 +12,7 @@ export default class Chat extends React.Component {
     idS: '',
     idR: '',
     name: '',
+    day: '',
   };
   getUser = async () => {
     const id = this.props.data;
@@ -50,17 +51,35 @@ export default class Chat extends React.Component {
     this.unsubscribeGetMessages();
   }
   render() {
+    let day = '';
+    let messages = this.state.messages.map(function(mess, index) {
+      if (mess.day === day) {
+        let newMess = {
+          message: mess.message,
+          date: mess.date,
+          incoming: mess.incoming,
+          day: '',
+        };
+        return newMess;
+      } else {
+        day = mess.day;
+        return mess;
+      }
+    });
     return (
       <ImageBackground
         style={[styles.container, styles.backgroundImage]}
         source={require('../images/background.png')}>
-        {header(this.state.name)}
+        {header(this.state.name, this.state.idR)}
         {this.state.messages ? (
           <FlatList
             style={styles.container}
-            data={this.state.messages}
+            data={messages.sort(function(a, b) {
+              return b.date - a.date;
+            })}
             renderItem={Message}
             keyExtractor={(item, index) => `message-${index}`}
+            inverted={true}
           />
         ) : null}
         <Compose

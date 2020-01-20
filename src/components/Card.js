@@ -3,10 +3,11 @@ import {Text, StyleSheet} from 'react-native';
 import {Thumbnail, Left, Body, ListItem} from 'native-base';
 import {withNavigation} from 'react-navigation';
 import {Actions} from 'react-native-router-flux';
+import {uid} from '../configs/firebase';
+
 const Card = props => {
   const {item} = props;
-  console.log(item);
-  return (
+  return item.uid === uid() ? null : (
     <ListItem
       thumbnail
       onPress={() => {

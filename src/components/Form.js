@@ -36,6 +36,7 @@ export default class Logo extends Component {
         const data = {
           name: this.state.inputs.name.value || result.user.email.split('@')[0],
           email: result.user.email,
+          uid: result.user.uid,
         };
         setData('users/' + result.user.uid, data);
       })
