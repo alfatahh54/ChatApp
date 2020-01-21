@@ -1,6 +1,6 @@
 <h1 align="center">Hit Hit Baam Game</h1>
 <p align="center">
-  <img width="250" src="./src/assets/logo-hithitbaam/logo.png"/>
+  <img width="250" src="./src/images/logo.png"/>
 </p>
 <p align="center">
   Built with React Native.
