@@ -1,4 +1,4 @@
-<h1 align="center">Hit Hit Baam Game</h1>
+<h1 align="center">Chat App</h1>
 <p align="center">
   <img width="250" src="./src/images/logo.png"/>
 </p>
