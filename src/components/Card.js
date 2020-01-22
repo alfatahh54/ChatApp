@@ -18,7 +18,7 @@ const Card = props => {
         <Thumbnail
           square
           source={{
-            uri: 'https://via.placeholder.com/210x295.png?text=No+Image',
+            uri: 'https://bootdey.com/img/Content/avatar/avatar6.png',
           }}
         />
       </Left>

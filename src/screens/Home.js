@@ -21,8 +21,8 @@ export default class Main extends React.Component {
           <Tab
             heading={
               <TabHeading>
-                <Icon name="camera" />
-                <Text style={styles.buttonTexts}>Camera</Text>
+                <Icon name="map" />
+                <Text style={styles.buttonTexts}>Map</Text>
               </TabHeading>
             }>
             <Camera />
