@@ -63,7 +63,7 @@ Alternatively see the GitHub documentation on [creating a pull request](https://
 
 ## Release APK
 
-<a href="https://drive.google.com/file/d/1DC85MPfFLEISoVtrU4cnb8QdOylpRPXn/view?usp=drivesdk">
+<a href="https://drive.google.com/file/d/1OUIGrnvBmobqx1HOgeiP-krwNAVlFcs6/view?usp=sharing">
   <img src="https://img.shields.io/badge/Download%20from-Google%20Drive-blue.svg?style=popout&logo=google-drive"/>
 </a>
 
