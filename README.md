@@ -83,7 +83,7 @@ Copyright © 2020 by Alfatah Hidayat
     <tr>
       <td align="center">
         <a href="https://github.com/alfatahh54">
-          <img width="100" src="https://avatars0.githubusercontent.com/u/11336853?s=460&v=4" alt="Alfatah Hidayat"><br/>
+          <img width="100" src="https://avatars2.githubusercontent.com/u/55615664?s=460&v=4" alt="Alfatah Hidayat"><br/>
         </a>
           <sub><b>Alfatah Hidayat</b></sub><br/>
           <sub>(React native)</sub>
